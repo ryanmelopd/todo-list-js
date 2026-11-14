@@ -1,9 +1,24 @@
 import { render } from "./dom.js"
 
+const CHAVE = "tarefas"
+
+function carregarTarefas() {
+    const salvo = localStorage.getItem(CHAVE)
+    if (salvo === null) {
+        return []
+    }
+    return JSON.parse(salvo)
+}
+
+function salvarTarefas(tarefas) {
+    localStorage.setItem(CHAVE, JSON.stringify(tarefas))
+}
+
 export function iniciarEventos(elementos) {
-    let listaTarefas = []
+    let listaTarefas = carregarTarefas()
 
     function atualizar() {
+        salvarTarefas(listaTarefas)
         render(elementos.lista, listaTarefas, removerTarefa)
     }
 
@@ -38,4 +53,6 @@ export function iniciarEventos(elementos) {
     elementos.botaoAdicionar.addEventListener("click", enviarTarefa)
     elementos.input.addEventListener("keydown", verificarEnter)
     elementos.botaoLimpar.addEventListener("click", removerTodas)
+
+    atualizar()
 }
