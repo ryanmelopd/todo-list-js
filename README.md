@@ -2,7 +2,7 @@
 
 Lista de tarefas feita com HTML, CSS e JavaScript. O projeto foi criado para praticar eventos, manipulação do DOM e organização de código em módulos.
 
-🔗 Demonstração: https://ryanmelopd.github.io/todolist-js/
+🔗 Demonstração: https://ryanmelopd.github.io/todo-list-js/
 
 ## Funcionalidades
 
