@@ -19,7 +19,7 @@ export function iniciarEventos(elementos) {
 
     function atualizar() {
         salvarTarefas(listaTarefas)
-        render(elementos.lista, listaTarefas, removerTarefa)
+        render(elementos.lista, listaTarefas, removerTarefa, alternarTarefa)
     }
 
     function enviarTarefa() {
@@ -27,7 +27,7 @@ export function iniciarEventos(elementos) {
         if (texto.trim() === "") {
             return
         }
-        listaTarefas.push({ id: Date.now(), texto: texto })
+        listaTarefas.push({ id: Date.now(), texto: texto, concluida: false })
         elementos.input.value = ""
         atualizar()
     }
@@ -36,6 +36,14 @@ export function iniciarEventos(elementos) {
         listaTarefas = listaTarefas.filter(function(tarefa) {
             return tarefa.id !== id
         })
+        atualizar()
+    }
+
+    function alternarTarefa(id) {
+        const tarefa = listaTarefas.find(function(tarefa) {
+            return tarefa.id === id
+        })
+        tarefa.concluida = !tarefa.concluida
         atualizar()
     }
 

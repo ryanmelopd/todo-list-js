@@ -16,10 +16,10 @@ body {
 }
 
 main {
-    flex: 1; 
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     padding: 40px 16px;
 }
 
@@ -100,6 +100,16 @@ button {
     background-color: #f7f7fb;
     border-radius: 8px;
     word-break: break-word;
+}
+
+#task-list li span {
+    cursor: pointer;
+    flex: 1;
+}
+
+#task-list li.concluida span {
+    text-decoration: line-through;
+    color: #888;
 }
 
 #task-list li button {
